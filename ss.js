@@ -1,3 +1,5 @@
+import PromptSync from "prompt-sync";
+
 const apprenants = [
     {
         id : prompt ("enter the id"),
