@@ -3,7 +3,7 @@ import {apprenants} from './data.js'
 
 
 
-function normaliserNom(nom){
+export function normaliserNom(nom){
     nom = nom.replace(/[^a-zA-Z\s]/g , "").trim().replace(/\s+/g, " ").toLowerCase().split(" ");
     
     for (let i = 0; i < nom.length; i++) {
@@ -14,7 +14,9 @@ function normaliserNom(nom){
     return nom
     }
 
-function validerResultat(){
+function validerResultat(jour, exercicesTermine 
+    
+){
     if (jour < 1 || jour > 7 || typeof jour !== "Number"){
         console.log("incorrect jour")
         return false
@@ -33,36 +35,54 @@ function validerResultat(){
     return true
 }
 
-console.log(validerResultat(5))
+//console.log(validerResultat(5))
 
 
 
-function ajouterApprenanat(id, name, city){
-    for (let apprenant of apprenants){
-        if (apprenant.id === id){
-            console.log("ce apprenand deja existe")
+
+
+
+
+
+// import {apprenants} from '../src/data.js'
+// import { normaliserNom } from '../src/progression.js';
+
+function ajouterApprenanat(id, name, city) {
+    for (let apprenant of apprenants) {
+        if (apprenant.id === id) {
+            console.log("ce apprenant deja existe")
             return false;
-            }
+        }
     }
+
     name = normaliserNom(name)
-    const nouvelApprenant {
-        id : id,
-        name : name,
-        city : city,
-        resultats : [],
+    const nouvelApprenant = {
+        id: id,
+        name: name,
+        city: city,
+        resultats: []
     }
-    nouvelApprenant.push(apprenants)
+
+    apprenants.push(nouvelApprenant)
+
+
+    return true;
 }
-return true;
-console.log(ajouterApprenanat)
+ajouterApprenanat(9, "mohamed ahricha", "nador")
 
 
 
 
 
+function rechercherApprenand(name) {
+    for (let i = 0; i < apprenants.length; i++) {
+        if (apprenants[i].nomComplet == normaliserNom(name)) {
+            return apprenants[i]
+        }
+    }
+}
 
-
-
+console.table(rechercherApprenand("sara dev"));
 
 
 
