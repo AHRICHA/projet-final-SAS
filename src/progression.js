@@ -1,6 +1,8 @@
 import {apprenants} from './data.js'
 import PromptSync from "prompt-sync";
 
+const prompt = PromptSync()
+
 
 
 export function normaliserNom(nom){
@@ -17,23 +19,23 @@ export function normaliserNom(nom){
 //  export function validerResultat(jour, exercicesTermine 
     
 // ){
-//     if (jour < 1 || jour > 7 || typeof jour !== "Number"){
-//         console.log("incorrect jour")
-//         return false
-//     }
+    if (jour < 1 || jour > 7 || typeof jour !== "Number"){
+        console.log("incorrect jour")
+        return false
+    }
 
 
-//     if (exercicesTermine < 0 || exercicesTermine > 20 || typeof exercicesTermine !== "number") {
-//         console.log("incorrect nombre")
-//         return false
-//     }
+    if (exercicesTermine < 0 || exercicesTermine > 20 || typeof exercicesTermine !== "number") {
+        console.log("incorrect nombre")
+        return false
+    }
 
-//     if (totalExercices !== 20 || typeof totalExercices !== "number"){
-//         console.log("incorrect")
-//         return false
-//     }
-//     return true
-// }
+    if (totalExercices !== 20 || typeof totalExercices !== "number"){
+        console.log("incorrect")
+        return false
+    }
+    return true
+}
 
 
 
@@ -55,44 +57,48 @@ export function normaliserNom(nom){
 // import {apprenants} from '../src/data.js'
 // import { normaliserNom } from '../src/progression.js';
 
-// export function ajouterApprenanat() {
-//     for (let apprenant of apprenants) {
-//         if (apprenant.id === id) {
-//             console.log("ce apprenant deja existe")
-//             return false;
-//         }
-//     }
-
-//     // name = normaliserNom(name)
-//     const nouvelApprenant = {
-//         id: id,
-//         nomComplet: normaliserNom(nomComplet),
-//         ville: city,
-//         resultats: []
-//     }
-
-//     apprenants.push(nouvelApprenant)
-
-
-//     return true;
-// }
-
-
-
-
-
-
-
-export function rechercherApprenand(name) {
-    let name = prompt("please enter your name")
-    for (let i = 0; i < apprenants.length; i++) {
-        if (apprenants[i].nomComplet == normaliserNom(name)) {
-            return apprenants[i]
+export function ajouterApprenanat(nomComplet, city) {
+    let id = apprenants.length + 1 
+    let nomComplet = prompt("enter your name")
+    let ville = prompt("entrer votre ville")
+    let resultats = []
+    for (let apprenant of apprenants) {
+        if (apprenant.id === id) {
+            console.log("ce apprenant deja existe")
+            console.log("");
         }
     }
+
+    // name = normaliserNom(name)
+    const nouvelApprenant = {
+        id: id ,
+        nomComplet: normaliserNom(nomComplet),
+        ville: city,
+        resultats: []
+    }
+
+    apprenants.push(nouvelApprenant)
+
+
+    return true;
 }
 
-console.table(rechercherApprenand("sara dev"));
+
+
+
+
+
+
+export function rechercherApprenand() {
+    let  name = prompt("please enter your name : ")
+    for (let i = 0; i < apprenants.length; i++) {
+        if (apprenants[i].nomComplet == normaliserNom(name)) {
+            console.table (apprenants[i])
+        }
+    }
+    console.log("verifie votre choix")
+}
+//console.table(rechercherApprenand());
 
 
 

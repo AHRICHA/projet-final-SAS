@@ -31,8 +31,7 @@ switch(choix){
         break;
     case 5 :
         break;
-    case 6 :
-        rechercherApprenand
+    case 6 : rechercherApprenand(apprenants)
         break;
     case 7 :
         break;
