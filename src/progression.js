@@ -1,4 +1,4 @@
-import {apprenants} from './data.js'
+import { apprenants } from "./data.js";
 import PromptSync from "prompt-sync";
 
 const prompt = PromptSync()
@@ -19,8 +19,7 @@ export function normaliserNom(nom){
 //  export function validerResultat(jour, exercicesTermine 
     
 // ){
-    if (jour < 1 || jour > 7 || typeof jour !== "Number"){
-        console.log("incorrect jour")
+    if (jour < 1 || jour > 7 || typeof jour !== "Number"){{        console.log("incorrect jour")
         return false
     }
 
